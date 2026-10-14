@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algo Jaya - Comfortable Socks</title>
+    <link rel="icon" href="{{ asset('images/logo-algojaya.png') }}?v=2" type="image/png">
+
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <!-- CDN Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('css/icon.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tambahkan CDN Vue.js 3 -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+
+<!-- Bungkus seluruh aplikasi dengan root element Vue (#app) -->
+<div id="app">
+
+    <header class="navbar">
+        <a href="/" class="logo">
+            <img src="{{ asset('images/logo-algojaya.png') }}" alt="Algojaya">
+        </a>
+
+        <div class="search-container">
+            <div class="search-box">
+                <!-- Contoh penggunaan reactive data Vue: v-model -->
+                <input
+                    type="text"
+                    id="searchInput"
+                    v-model="searchQuery"
+                    placeholder="What are you looking for?"
+                    autocomplete="off"
+                >
+                <span class="search-icon">🔍</span>
+            </div>
+            <div id="searchDropdown" class="search-dropdown" v-if="searchQuery">
+                <!-- Contoh menampilkan teks interaktif -->
+                <p style="padding: 10px; margin: 0;">Mencari: @{{ searchQuery }}</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- NAVBAR DI BAWAH -->
+    <div class="container nav-content">
+        <nav>
+            <a href="#home">Casual</a>
+            <a href="#about">Formal</a>
+            <a href="#services">School</a>
+            <a href="#portfolio">Sport</a>
+            <a href="#contact">Angkle</a>
+            <a href="#contact">Kids</a>
+            <a href="#contact">Women</a>
+        </nav>
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <i class="fas fa-star icon-produk"></i>
+            <span class="teks-produk">Produk baru (@{{ message }})</span>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <span class="badge">Solusi Digital Profesional</span>
+                <h1>Bangun Bisnis Anda <span>Lebih Digital</span></h1>
+                <p>
+                    Kami membantu bisnis berkembang melalui solusi
+                    teknologi, website, dan layanan digital yang modern,
+                    efektif, dan profesional.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn primary">Konsultasi Sekarang</a>
+                    <a href="#services" class="btn secondary">Lihat Layanan</a>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <div class="floating-card card-one">
+                    <strong>100+</strong>
+                    <small>Project</small>
+                </div>
+                <div class="hero-circle">
+                    <div class="hero-icon">&lt;/&gt;</div>
+                </div>
+                <div class="floating-card card-two">
+                    <strong>99%</strong>
+                    <small>Client Satisfaction</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kategori, Produk, Banner, dll. tetap berada di dalam #app -->
+    <div class="category-grid">
+        <div class="card">
+            <img src="casual.jpg" alt="Casual">
+            <div class="card-overlay">
+                <h3 class="card-title">CASUAL</h3>
+                <a href="#" class="btn-check">CHECK IT NOW &rarr;</a>
+            </div>
+        </div>
+        <!-- Sisa card kategori lainnya... -->
+    </div>
+
+    <!-- Bagian Footer dsb. -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-col brand-col">
+                <div class="footer-logo">
+                    <a href="/" class="logo">
+                        <img src="{{ asset('images/logo algojaya.png') }}" alt="Algojaya">
+                    </a>
+                </div>
+                <p class="brand-desc">
+                    Menyediakan produk kaos kaki terlengkap dengan kualitas terbaik.
+                </p>
+            </div>
+        </div>
+        <div class="bottom-bar">
+            <div class="bottom-container">
+                <p class="copyright">Copyright © 2026 ALGOJAYA</p>
+            </div>
+            <a href="#" class="back-to-top" aria-label="Back to Top">
+                <i class="fa-solid fa-chevron-up"></i>
+            </a>
+        </div>
+    </footer>
+
+</div> <!-- Penutup #app -->
+
+<!-- Script JS Utama & Inisialisasi Vue -->
+<script src="{{ asset('js/script.js') }}"></script>
+<script>
+    const { createApp, ref } = Vue;
+
+    createApp({
+        setup() {
+            const searchQuery = ref('');
+            const message = ref('Aktif');
+
+            return {
+                searchQuery,
+                message
+            }
+        }
+    }).mount('#app');
+</script>
+
+</body>
+</html>
